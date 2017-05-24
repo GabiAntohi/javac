@@ -46,7 +46,7 @@ public class Ex2Clock {
 	}
     public void incrementHours(int hIncrement){	
 	hours+=hIncrement;
-	if(hours>24)hours=hours%24;
+	if(hours>23)hours=hours%24;
 	}
     public void incrementMinutes(int mIncrement){
     	minutes+=mIncrement;
