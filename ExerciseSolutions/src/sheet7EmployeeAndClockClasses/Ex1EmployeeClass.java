@@ -31,11 +31,13 @@ public class Ex1EmployeeClass {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public void setAge(int age) {
+		if (age>=18&&age<=67)
+	     this.age=age;
+		else {System.out.println("not valid age");}
+	}
 	public int getAge() {
 		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
 	}
 	
 
