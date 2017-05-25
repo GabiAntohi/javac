@@ -4,15 +4,15 @@ public class MainForEx2Clock {
 
 	public static void main(String[] args) {
 		Ex2Clock clock = new Ex2Clock(23, 59, 59);
-		System.out.println(clock);  
-		clock.incrementHours(1);
-		System.out.println(clock);
-		clock.incrementMinutes(1);
-		System.out.println(clock); 
-		clock.incrementSeconds(50);
-		System.out.println(clock); 
+		System.out.println("starting time: " + clock);  
+		clock.incrementHours(0);
+		System.out.println("after incrementing the hours: " + clock);
+		clock.incrementMinutes(180);
+		System.out.println("after incrementing the minutes: " + clock); 
+		clock.incrementSeconds(186);
+		System.out.println("after incrementing the seconds: " +clock); 
 		clock.reset();
-		System.out.println(clock);
+		System.out.println("reset: " +clock);
 
 	}
 

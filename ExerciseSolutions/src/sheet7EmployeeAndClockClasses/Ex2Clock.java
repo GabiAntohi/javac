@@ -27,7 +27,6 @@ public class Ex2Clock {
 		else {System.out.println("invalid no. of hours");}
 	}
 	public int getSeconds() {
-	
 		return seconds;
 	}
 	public void setSeconds(int seconds) {
@@ -45,18 +44,21 @@ public class Ex2Clock {
 	
 	}
     public void incrementHours(int hIncrement){	
-	hours+=hIncrement;
+    	hours+=hIncrement;
 	if(hours>23)hours=hours%24;
+	else {System.out.println("invalid no. of hours");}
 	}
     public void incrementMinutes(int mIncrement){
     	minutes+=mIncrement;
-    	if(minutes>59)hours+=1;
+    	if(minutes>59)hours=minutes/60;
     	minutes=minutes%60;
+    	
     	}
     public void incrementSeconds(int sIncrement){
     	seconds+=sIncrement;
-    	if(seconds>59)minutes+=1;
+    	if(seconds>59)minutes=seconds/60;
     	seconds=seconds%60;
+    	
     	}
     public void reset(){
     	hours = 0;
@@ -67,7 +69,7 @@ public class Ex2Clock {
     
 	@Override
 	public String toString() {
-		return String.format("time: \n%02d:%02d:%02d", hours, minutes, seconds);
+		return String.format("%02d:%02d:%02d", hours, minutes, seconds);
 				
 				
 	}
