@@ -46,17 +46,18 @@ public class Ex2Clock {
     public void incrementHours(int hIncrement){	
     	hours+=hIncrement;
 	if(hours>23)hours=hours%24;
-	else {System.out.println("invalid no. of hours");}
 	}
     public void incrementMinutes(int mIncrement){
     	minutes+=mIncrement;
-    	if(minutes>59)hours=minutes/60;
+    	if(minutes>59)
+    	incrementHours(minutes/60);
     	minutes=minutes%60;
     	
     	}
     public void incrementSeconds(int sIncrement){
     	seconds+=sIncrement;
-    	if(seconds>59)minutes=seconds/60;
+    	if(seconds>59)
+    	incrementMinutes (seconds/60);
     	seconds=seconds%60;
     	
     	}

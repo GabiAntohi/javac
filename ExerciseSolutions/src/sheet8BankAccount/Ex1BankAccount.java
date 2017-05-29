@@ -8,7 +8,7 @@ public class Ex1BankAccount {
 	public static double interestRate = 0.03;
 	public static int bankAccountNoCounter =0;
 	public static int accountNoCounter =10000;
-	public Ex1BankAccount() {
+	private Ex1BankAccount() {
 		accountNo=accountNoCounter;
 		accountNoCounter++;
 		bankAccountNoCounter++;
@@ -50,7 +50,9 @@ public class Ex1BankAccount {
 	}
 	//methods
 	public void moneyDeposit(double deposit){
+		if (deposit>0)
 		balance+=deposit; 
+		else {System.out.println("no negative deposits alowed");}
 	}
 	public void moneyWithdrawal(double withdrawal){
 		if(withdrawal<=balance)
