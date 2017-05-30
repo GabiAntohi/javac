@@ -1,6 +1,6 @@
 package sheet10Inheritance;
 
-public class Ex1Shape {
+public abstract class Ex1Shape {
 	private Colour colour;
 enum Colour{RED, GREEN, BLUE, YELLOW, BLACK, PINK, ORANGE, WHITE, GREY};
 
@@ -20,10 +20,8 @@ enum Colour{RED, GREEN, BLUE, YELLOW, BLACK, PINK, ORANGE, WHITE, GREY};
 		this.colour = colour;
 	}
 
-	public void draw(){
-		System.out.println("Drawing a shape");	
+	public abstract void draw();
 
-	}
 
 	@Override
 	public String toString() {
@@ -64,8 +62,9 @@ class Rectangle extends Ex1Shape{
 	}
 
 	public void draw(){
-		System.out.println("Drawing a rectangle");	
-	}
+		
+		System.out.println("I am a rectangle");
+	};
 
 	public int getArea(){
 		area = height*width;
@@ -91,8 +90,10 @@ class Triangle extends Ex1Shape{
     super(colour);
 	}
 	public void draw(){
-		System.out.println("Drawing a triangle");	
-	}
+		
+		System.out.println("I am a triangle");
+	};
+	
 	public String toString() {
 		return super.toString();
 	}
@@ -119,8 +120,9 @@ class Circle extends Ex1Shape{
 	}
 
 	public void draw(){
-		System.out.println("Drawing a circle");
-	}
+		
+		System.out.println("I am a circle");
+	};
 
 	@Override
 	public String toString() {

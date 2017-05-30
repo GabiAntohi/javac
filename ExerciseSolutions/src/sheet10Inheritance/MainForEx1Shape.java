@@ -1,12 +1,11 @@
 package sheet10Inheritance;
 
-import sheet6ArraysOfObjects.Ex2PC;
+
 
 public class MainForEx1Shape {
 
 	public static void main(String[] args) {
-		Ex1Shape shape = new Ex1Shape();
-		shape.draw();
+		
 		System.out.println("--------------------");
 
 		Rectangle r = new Rectangle(13, 18, Rectangle.Colour.BLACK );
@@ -38,26 +37,35 @@ public class MainForEx1Shape {
 		Circle c1 = new Circle(30, Circle.Colour.PINK);
 		c1.draw();
 		System.out.println(c1);
-		
+
 		System.out.println("-------------------------");
 		System.out.println("-------------------------");	
 		System.out.println("-------------------------");
 		System.out.println("-------------------------");
-		Ex1Shape[] allShapes = {r, t, c, shape, t1, c1, r1, r2};
+		Ex1Shape[] allShapes = {r, t, c, t1, c1, r1, r2};
 		printEx1Shape(allShapes);
-		
+
 	}
-public static void printEx1Shape(Ex1Shape[] arrayOfShapes){
-	for(Ex1Shape oneShape:arrayOfShapes)
-			System.out.println(oneShape.getColour());
-		System.out.println("-------------------------");
-		System.out.println("-------------------------");
-		}
-	
-	
+	public static void printEx1Shape(Ex1Shape[] allShapes){	
+		for(Ex1Shape one:allShapes)	
+			if (one instanceof Circle)
+			{System.out.println("circle radius: " + ((Circle)one).getRadius());}
+			else if (one instanceof Rectangle)
+			{System.out.println("Rectangle area: " + ((Rectangle)one).getArea());};
+			System.out.println("-------------------------");
+			for(Ex1Shape one:allShapes)	
+				System.out.println(one.getColour());
+			System.out.println("-------------------------");
+			for(Ex1Shape one:allShapes)// for draw method, don't print	
+		     one.draw();
+			System.out.println("-------------------------");
+			System.out.println("-------------------------");
+	}
+
+
 }
-	
-	
-	
-	
+
+
+
+
 
