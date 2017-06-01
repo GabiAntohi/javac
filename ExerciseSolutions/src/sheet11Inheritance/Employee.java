@@ -1,8 +1,6 @@
 package sheet11Inheritance;
 
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.chrono.*;
 import java.time.temporal.ChronoField;
 
 
@@ -11,7 +9,6 @@ public abstract class Employee {
 	private String lastName;
 	private LocalDate dateOfBirth;
 	
-
 	public Employee(){
 
 	}
@@ -37,7 +34,6 @@ public abstract class Employee {
 		this.lastName = lastName;
 	}
 	
-	
 	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -50,6 +46,7 @@ public abstract class Employee {
 	public String toString() {
 		return "\nFirst Name: " + firstName + 
 				"\nLast Name: " + lastName +
+				"\nEarnings: "  + getEarnings()+
 				"\nDate of Birth: " + String.format("%d/%02d/%d", 
 						dateOfBirth.get(ChronoField.DAY_OF_MONTH),
 						dateOfBirth.get(ChronoField.MONTH_OF_YEAR),
@@ -65,14 +62,12 @@ final class Boss extends Employee{
 
 	}
 
-	public Boss(String firstName, String lastName, LocalDate dateOfBirth ) {
+	public Boss(String firstName, String lastName, LocalDate dateOfBirth, double weeklySalary ) {
 		super(firstName, lastName, dateOfBirth);	
-	
-
+        this.weeklySalary = weeklySalary;
 	}
 
 	public void setWeeklySalary(){
-		weeklySalary=700;
 
 	}
 	public double getWeeklySalary(){
@@ -80,15 +75,13 @@ final class Boss extends Employee{
 
 	}
 	public double getEarnings(){
-		weeklySalary=700;
 		salary=weeklySalary*52;
 		return salary;
-
 	}
 
 	@Override
 	public String toString() {
-		return "BOSS " +super.toString() + "\nYearly Salary: " +  salary;
+		return "BOSS " +super.toString() + "\nYearly Salary: " +  salary + "\nWeekly Salary: " + weeklySalary;
 	}
 
 }
@@ -96,15 +89,16 @@ final class Boss extends Employee{
 final class CommissionWorker extends Employee{
 	private double commission;
 	private int quantity;
-	private double salary = 200;
+	private double salary;
 	
-	public CommissionWorker() {
-		salary=200;
+	public CommissionWorker() {	
 	}
 
-	public CommissionWorker( String firstName, String lastName, LocalDate dateOfBirth, int quantity) {
+	public CommissionWorker( String firstName, String lastName, LocalDate dateOfBirth, int quantity, double commission, double salary) {
 		super(firstName, lastName, dateOfBirth);
-		setQuantity(quantity);		
+		setQuantity(quantity);	
+		this.commission=commission;
+		this.salary=salary;
 	}
 
 	public double getSalary() {	
@@ -126,7 +120,6 @@ final class CommissionWorker extends Employee{
 	}
 
 	public void setCommission(double commission) {
-		commission=30;
 		this.commission=commission;
 		
 	}
@@ -135,21 +128,16 @@ final class CommissionWorker extends Employee{
 		return commission;
 	}
 
-//	if(quantity>15)commission=((quantity-15)/100)*salary;
-	
 	public double getEarnings(){
-		salary=200;
-		salary+=commission;
 		//flat base salary + percentage of sales
-		return salary;
+		return salary=commission*quantity;
 	}
 
 	@Override
 	public String toString() {
 		return "Commission Worker " +super.toString() + 
 				"\nNumber of items sold: " + quantity + 
-				"\nCommission: "+  commission +
-				"\nSalary: " +  getSalary();
+				"\nCommission: "+  commission;
 	}
 }
 
@@ -160,9 +148,10 @@ final class PieceWorker extends Employee {
 	public PieceWorker() {
 
 	}
-	public PieceWorker(String firstName, String lastName, LocalDate dateOfBirth, int quantity  ) {
+	public PieceWorker(String firstName, String lastName, LocalDate dateOfBirth, int quantity, double wagePerPiece  ) {
 		super(firstName, lastName, dateOfBirth);
 		setQuantity(quantity);
+		this.wagePerPiece=wagePerPiece;
 	}
 
 	public double getWagePerPiece() {
@@ -181,7 +170,6 @@ final class PieceWorker extends Employee {
 	}
 	public double getEarnings(){
 		//paid by no of pieces produced
-		wagePerPiece = 50;
 		wage=wagePerPiece*quantity;
 		return wage;
 	}
@@ -194,8 +182,7 @@ final class PieceWorker extends Employee {
 	}
 	public String toString() {
 		return "Piece Worker " +super.toString() + 
-				"\nNumber of Items produced: " + quantity + 
-				"\nWage: " +  wage;
+				"\nNumber of Items produced: " + quantity;
 	}
 
 }
@@ -204,15 +191,20 @@ final class PieceWorker extends Employee {
 final class HourlyWorker extends Employee {
 	private int hours;
 	private double wage;
+	private double earnings;
 
 	public HourlyWorker() {
 
 	}
-	public HourlyWorker(String firstName, String lastName, LocalDate dateOfBirth, int hours ) {
+	public HourlyWorker(String firstName, String lastName, LocalDate dateOfBirth, int hours, double wage ) {
 		super(firstName, lastName, dateOfBirth);
 		setHours(hours);
+		this.wage=wage;
 	}
 
+	public void setEarnings(double earnings) {
+		this.earnings = earnings;
+	}
 	public int getHours() {
 		return hours;
 	}
@@ -229,14 +221,14 @@ final class HourlyWorker extends Employee {
 	}
 	public double getEarnings(){
 		//by hour + overtime
-		wage=55;
-		wage=55*hours;
-		return wage;
+	 if (hours>40)
+			earnings=(wage*40 + (wage*(hours-40)*3/2));
+		else earnings=wage*hours;
+		return earnings;
 	}
 
 	public String toString() {
 		return "Hourly Worker " +super.toString() + 
-				"\nHours Worked: " + hours + 
-				"\nWage: " +  wage;
+				"\nHours Worked: " + hours;
 	}
 }
