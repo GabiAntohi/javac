@@ -49,55 +49,62 @@ public class Trainee {
 	
 }
 class Electrician extends Trainee implements Apprentice{
-
+	private int phase;
+	private String employersName;
 	public Electrician() {
 		super();
 		}
-		
 
-	public Electrician(String name, LocalDate dateOfBirth, String ppsNumber) {
+	public Electrician(String name, LocalDate dateOfBirth, String ppsNumber, int phase, String employersName) {
 		super(name, dateOfBirth, ppsNumber);
-		
+		setPhase(phase);
+		this.employersName = employersName;	
 	}
-	public void setEmployersName(String name){}
-	public String getEmployersName(){
-		return null;
+
+	public String getEmployersName() {
+		return employersName;
 	}
-	public void setPhase(int Phase){}
+
+	public void setEmployersName(String employersName) {
+		this.employersName = employersName;
+	}
+	
+	public void setPhase(int phase){
+		if (phase==Apprentice.PHASE_ONE||phase==PHASE_TWO||phase==PHASE_THREE||phase==PHASE_FOUR||phase==PHASE_FIVE||phase==PHASE_SIX)
+			this.phase = phase;	
+			else System.out.println("Invalid phase");
+	}
 	public int getPhase(){
-		return 0;
+		return phase;
 	}
 
 	@Override
 	public String toString() {
-		return "Electrician: "+ super.toString();
+		return "Electrician: "+ super.toString()+
+			"\nPhase: " + phase+
+			"\nName of manager: "+ employersName;
 	}
-	
-	
-	
+		
 }
 class Carpenter extends Trainee implements Apprentice{
-	private int phase;
+	int phase;
 	private String employersName;
 	public Carpenter() {
 		super();
-	
 	}
 
 	public Carpenter(String name, LocalDate dateOfBirth, String ppsNumber, int phase, String employersName) {
 		super(name, dateOfBirth, ppsNumber);
-		this.phase=phase;
+		setPhase(phase);
 		this.employersName = employersName;
 	}
-	
-
 
 	public void setEmployersName(String name){}
 	public String getEmployersName(){
 		return employersName;
 	}
-	public void setPhase(int Phase){
-		if (phase>0&&phase<7)
+	public void setPhase(int phase){
+		if (phase==PHASE_ONE||phase==PHASE_TWO||phase==PHASE_THREE||phase==PHASE_FOUR||phase==PHASE_FIVE||phase==PHASE_SIX)
 		this.phase = phase;	
 		else System.out.println("Invalid phase");
 		
@@ -113,42 +120,23 @@ class Carpenter extends Trainee implements Apprentice{
 	}
 }
 class ComputerAidedDesign extends Trainee{
-	private int phase;
-	public int getPhase() {
-		return phase;
-	}
 
-	public void setPhase(int phase) {
-		this.phase = phase;
-	}
 
-	public String getEmployersName() {
-		return employersName;
-	}
 
-	public void setEmployersName(String employersName) {
-		this.employersName = employersName;
-	}
-
-	private String employersName;
 	public ComputerAidedDesign() {
 		super();
 		
 	}
 
-	public ComputerAidedDesign(String name, LocalDate dateOfBirth, String ppsNumber, int phase, String employersName) {
+	public ComputerAidedDesign(String name, LocalDate dateOfBirth, String ppsNumber) {
 		super(name, dateOfBirth, ppsNumber);
-		this.phase=phase;
-		this.employersName = employersName;
+		
 	}
 
 	@Override
 	public String toString() {
-		return "Computer Aided Design: " + super.toString() +
-				"\nPhase: " + phase+
-				"\nName of manager: "+ employersName;
+		return "Computer Aided Design: " + super.toString();
 	}
-	
 	
 	
 }
