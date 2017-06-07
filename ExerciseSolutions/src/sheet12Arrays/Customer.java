@@ -1,5 +1,5 @@
 package sheet12Arrays;
-import java.util.stream.*;
+
 import java.util.Arrays;
 
 public class Customer {
@@ -62,7 +62,7 @@ public class Customer {
 				"\naddress: " + address + 
 				"\nphone: " + phone + 
 				"\npizzas: "+ Arrays.toString(pizzas) + 
-				"\ntotalCost=" + getTotalCost();
+				"\nTotal Cost: " + getTotalCost();
 	}
 
 
