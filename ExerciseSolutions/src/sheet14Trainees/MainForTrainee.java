@@ -31,7 +31,7 @@ public class MainForTrainee {
 		for(Trainee one:alltrainees){
 			if (one instanceof Apprentice &&((Apprentice)one).getPhase()==2){
 			((Apprentice)one).getPhase();	
-		    System.out.println("Phase 2"+"\nEmployer name: " + ((Apprentice)one).getEmployersName() + "\nEmployee name: " + one.getName());}
+		    System.out.println("Phase 2: "+"\nEmployer name: " + ((Apprentice)one).getEmployersName() + "\nEmployee name: " + one.getName());}
 		
 		
 	         	/*for(Trainee one:alltrainees){

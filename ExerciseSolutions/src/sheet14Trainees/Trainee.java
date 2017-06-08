@@ -121,8 +121,6 @@ class Carpenter extends Trainee implements Apprentice{
 }
 class ComputerAidedDesign extends Trainee{
 
-
-
 	public ComputerAidedDesign() {
 		super();
 		
@@ -156,8 +154,6 @@ class SoftwareDeveloper extends Trainee{
 	public String toString() {
 		return "Software Developer: "+  super.toString();
 	}
-	
-	
 	
 }
 
