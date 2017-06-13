@@ -33,8 +33,14 @@ public class Ex5LetterSearch {
 		System.out.println("The letter you wrote is: " + input2);
 	   
 		if (input.indexOf(input2)!=-1)
-	    { int position = input.indexOf(input2);
-	       System.out.println("there is " + input2 + " in " + input + " and the position is " + position);
+			for(int b=0; b<1; b++)
+			{ 
+			
+			int position = input.indexOf(input2);
+		 while(position>=0){
+		System.out.println("the letter " + input2 + " can be found at position " + position);
+		   position=input.indexOf(input2, position+1);
+		   }
 	    }
 	    else
 	    {
