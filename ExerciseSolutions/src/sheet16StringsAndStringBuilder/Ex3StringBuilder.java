@@ -28,7 +28,7 @@ public class Ex3StringBuilder {
 			System.out.println(sb);//prints Hello Java  
 			
 			StringBuilder sb1=new StringBuilder("Wednesday's Menu: Roast Turkey with homemade turkey gravy, potatoes and veg of the day");  
-			sb1.replace(0,5,"Thur");   
+			sb1.replace(0,5,"Thur");   //use index of
 			System.out.println(sb1); 
 			
 			StringBuilder sb2=new StringBuilder("Wednesday's Menu: Roast Turkey with homemade turkey gravy, potatoes and veg of the day");  
@@ -40,7 +40,7 @@ public class Ex3StringBuilder {
 			System.out.println(sb3);
 			
 			StringBuilder sb4=new StringBuilder("Wednesday's Menu: Roast Turkey with homemade turkey gravy, potatoes and veg of the day. Jelly and icecream for desert.");  
-			sb4.replace(93,106, ""); 
+			sb4.delete(sb4.indexOf("and icecream"),sb4.indexOf("for"));
 			System.out.println(sb4);
 			
 			
