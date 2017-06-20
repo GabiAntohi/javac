@@ -2,7 +2,7 @@ package arrayLists;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
+
 
 public class Ex2ArrayListOfTrainees {
 private String name;
@@ -19,7 +19,7 @@ public Ex2ArrayListOfTrainees(String name, String address, LocalDate dateOfBirth
 	this.dateOfBirth = dateOfBirth;
 }
 
-public String getName(String input) {
+public String getName() {
 	return name;
 }
 
@@ -75,10 +75,10 @@ public boolean equals(Object obj) {
 @Override
 public String toString() {
 	 DateTimeFormatter formatter =
-             DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG);
-	return "\nName of Trainee: " + name +
+             DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	return "\nName of Trainee:\n" + name +
      "\nAddress: " + address +
-     "\nDate Of Birth: " + dateOfBirth.format(formatter);
+     "\nDate Of Birth: " + getDateOfBirth().format(formatter);
 }
 
 

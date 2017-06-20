@@ -3,8 +3,8 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.Arrays;
-
+//import java.util.Iterator;
+import java.time.format.DateTimeFormatter;
 public class MainForEx2ArrayListOfTrainees {
 
 	public static void main(String[] args) {
@@ -38,8 +38,8 @@ public class MainForEx2ArrayListOfTrainees {
 		System.out.println(tcopy);
 		System.out.println("----------------");
 		System.out.println("----------------");
-		
-		ArrayList<Object> traineeList = new ArrayList<>();
+
+		ArrayList<Ex2ArrayListOfTrainees> traineeList = new ArrayList<>();
 		traineeList.add(t);
 		traineeList.add(t1);
 		traineeList.add(t2);
@@ -53,11 +53,47 @@ public class MainForEx2ArrayListOfTrainees {
 		Scanner s = new Scanner (System.in);
 		System.out.println("Please guess a name");
 		String input = s.nextLine();
-		for(Object o:traineeList)
-		//System.out.println( "Address: " +((Ex2ArrayListOfTrainees) o).indexOf(input).getAddress());
-		System.out.println( "Address: " +((Ex2ArrayListOfTrainees) o).getAddress());
+		boolean isFound = false;
+		for(Ex2ArrayListOfTrainees o:traineeList){
+			if(input.equals(o.getName())){ 
+				DateTimeFormatter formatter =
+		             DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				System.out.println(o.getDateOfBirth().format(formatter));	
+				isFound=true;
+			}
+		}
+		if(!isFound){System.out.println( input + " is not valid, try another name.");}
+
+		System.out.println("Choose a trainee to remove");
+
+		String input1 = s.nextLine();
+		isFound = false;
+		for(int i=0; i<traineeList.size(); i++){
+			if((traineeList.get(i).getName().equals(input1))){	
+				System.out.println(traineeList.remove(traineeList.get(i)));	
+				System.out.println(traineeList);
+				isFound=true;
+				}
+		}
+		if(!isFound){System.out.println( input1 + " is not valid, try another name.");}
+
+
+		/*Iterator<Ex2ArrayListOfTrainees> iterator = traineeList.iterator();
+
+		        System.out.println("Printing list without one trainee:" );
+		        // iterator.hasNext(): asks if there is a next element in the list?
+		        while(iterator.hasNext()) { 
+		        	Ex2ArrayListOfTrainees currentTrainee = iterator.next(); // Get that element
+		        	if(input.equals(currentTrainee.getName()))
+		            System.out.println(traineeList.remove(traineeList.get(currentTrainee)));
+		          System.out.println(traineeList);
+		            iterator.remove(); // Remove current element
+		        } COULD NOT GET IT TO WORK */
 		s.close();
-	
 	}
 
 }
+
+
+
+
