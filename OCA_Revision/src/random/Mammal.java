@@ -27,8 +27,10 @@ void eat(){}
 	//w.eat(); the line above does not compile
 	
 	((Dog)d).eat();
-	((Jumpable)w1).jump();
-	
+	//((Jumpable)w1).jump(); compiles but does not run - java.lang.ClassCastException
+	//((Cat)d1).eat(); will not compile
+	((Whale)w1).eat();
+	((Mammal)d1).eat();
 	}
 
 }
